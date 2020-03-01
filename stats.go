@@ -31,10 +31,14 @@ func harmonicMean(n0, n1 float64) float64 {
 	return 1.0 / ((1.0 / n0) + (1.0 / n1))
 }
 
-func average(w []float64) float64 {
+func sum(w []float64) float64 {
 	sum := 0.0
 	for _, v := range w {
 		sum += v
 	}
-	return sum / float64(len(w))
+	return sum
+}
+
+func average(w []float64) float64 {
+	return sum(w) / float64(len(w))
 }

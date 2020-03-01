@@ -9,6 +9,7 @@ type Adwin struct {
 	window []float64
 
 	conservative bool
+	detected     bool
 }
 
 func NewAdwin(delta float64) *Adwin {
@@ -18,11 +19,17 @@ func NewAdwin(delta float64) *Adwin {
 	}
 }
 
+func (a *Adwin) Conservative(t bool) {
+	a.conservative = t
+}
+
 func (a *Adwin) Add(x float64) {
 	a.window = append(a.window, x)
+	a.detected = false
 	for {
 		detected := a.detectChanging()
 		if detected {
+			a.detected = true
 			a.window = a.window[1:]
 		} else {
 			break
@@ -30,8 +37,16 @@ func (a *Adwin) Add(x float64) {
 	}
 }
 
-func (a *Adwin) Conservative(t bool) {
-	a.conservative = t
+func (a *Adwin) Size() int {
+	return len(a.window)
+}
+
+func (a *Adwin) Sum() float64 {
+	return sum(a.window)
+}
+
+func (a *Adwin) Detected() bool {
+	return a.detected
 }
 
 func (a *Adwin) detectChanging() bool {
