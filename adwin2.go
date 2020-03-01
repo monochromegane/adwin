@@ -69,9 +69,6 @@ func (a *Adwin2) detectChanging() bool {
 		e = epsilonConservative(a.delta, n, n0, n1)
 	} else {
 		v := a.window2.Sum()/float64(a.window2.Size()) - ((wSum / float64(n)) * (wSum / float64(n)))
-		if v == 0.0 {
-			v = 1e-8
-		}
 		e = epsilon(v, a.delta, n, n0, n1)
 	}
 	uHatW0 := w0Sum / float64(n0)
