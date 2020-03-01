@@ -8,6 +8,7 @@ type Adwin2 struct {
 	window2 *ExpHist
 
 	conservative bool
+	detected     bool
 }
 
 func NewAdwin2(delta float64) *Adwin2 {
@@ -27,6 +28,7 @@ func (a *Adwin2) Add(x float64) {
 	if !a.conservative {
 		a.window2.Add(x * x)
 	}
+	a.detected = false
 
 	detected := a.detectChanging()
 	if detected {
@@ -34,7 +36,20 @@ func (a *Adwin2) Add(x float64) {
 		if !a.conservative {
 			a.window2.Drop()
 		}
+		a.detected = true
 	}
+}
+
+func (a *Adwin2) Size() int {
+	return a.window.Size()
+}
+
+func (a *Adwin2) Sum() float64 {
+	return a.window.Sum()
+}
+
+func (a *Adwin2) Detected() bool {
+	return a.detected
 }
 
 func (a *Adwin2) detectChanging() bool {
