@@ -8,6 +8,13 @@ func epsilonConservative(delta float64, n, n0, n1 int) float64 {
 	return math.Sqrt(1.0 / (2.0 * m) * math.Log(4.0/deltaDash))
 }
 
+func epsilon(v, delta float64, n, n0, n1 int) float64 {
+	m := harmonicMean(float64(n0), float64(n1))
+	deltaDash := delta / math.Log(float64(n))
+	l := math.Log(2.0 / deltaDash)
+	return math.Sqrt((2.0/m)*v*l) + (2.0/(3.0*m))*l
+}
+
 func variance(w []float64) float64 {
 	sum := 0.0
 	sum2 := 0.0
