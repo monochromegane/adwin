@@ -1,6 +1,6 @@
 # Adwin and Adwin2
 
-Adwin is a adaptive windowing algorithm. It is from `Learning from time-changing data with adaptive windowing, Bifet, Albert, and Ricard Gavalda; Proceedings of the 2007 SIAM international conference on data mining. Society for Industrial and Applied Mathematics, 2007`.
+Adwin is an adaptive windowing algorithm. It is from `Learning from time-changing data with adaptive windowing, Bifet, Albert, and Ricard Gavalda; Proceedings of the 2007 SIAM international conference on data mining. Society for Industrial and Applied Mathematics, 2007`.
 
 Adwin2 improves time and memory requirements by using Exponential Histograms.
 
