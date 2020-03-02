@@ -1,4 +1,4 @@
-# Adwin and Adwin2
+# Adwin and Adwin2 [![Actions Status](https://github.com/monochromegane/adwin/workflows/Go/badge.svg)](https://github.com/monochromegane/adwin/actions)
 
 Adwin is an adaptive windowing algorithm. It is from `Learning from time-changing data with adaptive windowing, Bifet, Albert, and Ricard Gavalda; Proceedings of the 2007 SIAM international conference on data mining. Society for Industrial and Applied Mathematics, 2007`.
 
