@@ -11,7 +11,7 @@ type Adwin2 struct {
 	detected     bool
 }
 
-func NewAdwin2(delta float64) *Adwin2 {
+func NewAdwin2(delta float64) AdaptiveWindow {
 	return &Adwin2{
 		delta:   delta,
 		window:  NewExpHist(2),
