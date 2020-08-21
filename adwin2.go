@@ -1,11 +1,15 @@
 package adwin
 
-import "math"
+import (
+	"math"
+
+	exphist "github.com/monochromegane/exponential-histograms"
+)
 
 type Adwin2 struct {
 	delta   float64
-	window  *ExpHist
-	window2 *ExpHist
+	window  *exphist.ExpHistRealNumber
+	window2 *exphist.ExpHistRealNumber
 
 	conservative bool
 	detected     bool
@@ -14,8 +18,8 @@ type Adwin2 struct {
 func NewAdwin2(delta float64) AdaptiveWindow {
 	return &Adwin2{
 		delta:   delta,
-		window:  NewExpHist(2),
-		window2: NewExpHist(2),
+		window:  exphist.NewForRealNumber(2),
+		window2: exphist.NewForRealNumber(2),
 	}
 }
 
@@ -59,8 +63,8 @@ func (a *Adwin2) detectChanging() bool {
 	}
 	wSum := a.window.Sum()
 	w1 := a.window.Tail()
-	n1 := w1.size()
-	w1Sum := w1.sum()
+	n1 := w1.Size()
+	w1Sum := w1.Sum()
 	n0 := n - n1
 	w0Sum := wSum - w1Sum
 
