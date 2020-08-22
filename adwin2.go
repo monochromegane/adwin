@@ -56,6 +56,13 @@ func (a *Adwin2) Detected() bool {
 	return a.detected
 }
 
+func (a *Adwin2) Drop() {
+	a.window.Drop()
+	if !a.conservative {
+		a.window2.Drop()
+	}
+}
+
 func (a *Adwin2) detectChanging() bool {
 	n := a.window.Size()
 	if n < 2 {
